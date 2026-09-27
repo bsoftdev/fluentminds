@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FluentMinds — Aprenda Inglês. Abra novas oportunidades.</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap">
+<style>
+:root{
+  --navy:#0F2E5C; --blue:#1E5FD9; --blue-light:#EAF1FF; --blue-pale:#F5F9FF;
+  --ink:#12213B; --muted:#5B6A85; --white:#FFFFFF; --gold:#F0AA1F;
+  --radius:16px;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:calc(72px + env(safe-area-inset-top,0px));}
+body{font-family:'Inter',sans-serif; color:var(--ink); background:var(--white); margin:0;}
+h1,h2,h3,.brand{font-family:'Sora',sans-serif;}
+h2{color:var(--navy); font-weight:700; letter-spacing:-0.01em;}
+p{color:var(--muted); line-height:1.65;}
+.section{padding:88px 0;}
+@media (max-width:768px){.section{padding:56px 0;}}
+.eyebrow{display:inline-block; background:var(--blue-light); color:var(--blue); font-weight:600; font-size:.85rem; padding:6px 16px; border-radius:999px; margin-bottom:18px;}
+
+/* Navbar */
+.navbar{position:sticky; top:0; z-index:1000; background:rgba(255,255,255,.92); backdrop-filter:blur(8px); padding-top:calc(14px + env(safe-area-inset-top,0px)); padding-bottom:14px; box-shadow:0 1px 0 rgba(15,46,92,.06);}
+.brand{color:var(--navy); font-weight:800; font-size:1.4rem;}
+.brand span{color:var(--blue);}
+.nav-link{color:var(--ink)!important; font-weight:500; margin:0 6px;}
+.btn-primary-brand{background:var(--blue); border:none; color:#fff; font-weight:600; padding:10px 22px; border-radius:10px; transition:transform .15s ease, box-shadow .15s ease;}
+.btn-primary-brand:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(30,95,217,.3); color:#fff;}
+.btn-outline-brand{border:1.5px solid var(--blue); color:var(--blue); font-weight:600; border-radius:10px; padding:9px 20px; background:transparent;}
+.btn-outline-brand:hover{background:var(--blue-light); color:var(--blue);}
+.btn-light-brand{background:#fff; color:var(--blue); font-weight:700; border-radius:10px; padding:14px 30px; border:none;}
+.btn-light-brand:hover{transform:translateY(-2px); box-shadow:0 12px 28px rgba(0,0,0,.15); color:var(--navy);}
+
+/* Hero */
+.hero{background:linear-gradient(180deg,var(--blue-pale) 0%, #fff 100%); overflow:hidden;}
+.hero h1{font-size:3rem; color:var(--navy); font-weight:800; line-height:1.12;}
+@media (max-width:768px){.hero h1{font-size:2.1rem;}}
+.check-row{display:flex; flex-wrap:wrap; gap:18px; margin-top:22px; font-weight:600; color:var(--navy);}
+.check-row span{white-space:nowrap;}
+.check-row i{color:var(--blue);}
+.hero-art{position:relative; width:100%; max-width:420px; aspect-ratio:1/1; margin:0 auto;}
+.hero-art svg{position:absolute; inset:0; width:100%; height:100%; display:block;}
+.hero-blob{position:absolute; inset:0; background:linear-gradient(135deg,var(--blue) 0%, var(--navy) 100%); border-radius:32px; opacity:.08;}
+.float-card{position:absolute; background:#fff; border-radius:14px; box-shadow:0 14px 34px rgba(15,46,92,.14); padding:10px 14px; font-weight:600; font-size:.8rem; color:var(--navy); display:flex; align-items:center; gap:6px; white-space:nowrap; z-index:2;}
+.float-card i{color:var(--blue);}
+.fc1{top:4%; left:0;} .fc2{top:46%; right:-4%;} .fc3{bottom:2%; left:6%;}
+@media (max-width:576px){.float-card{font-size:.72rem; padding:8px 10px;} .fc2{right:-2%;}}
+
+/* trust strip */
+.trust{background:var(--blue-pale); border-top:1px solid #e3ecfb; border-bottom:1px solid #e3ecfb;}
+.trust-item{text-align:center; font-weight:600; color:var(--navy);}
+.trust-item i{font-size:1.6rem; color:var(--blue); display:block; margin-bottom:8px;}
+
+/* program cards */
+.prog-card{border:1px solid #E7EEFA; border-radius:var(--radius); padding:34px 28px; height:100%; transition:box-shadow .2s ease, transform .2s ease; background:#fff;}
+.prog-card:hover{box-shadow:0 18px 40px rgba(15,46,92,.1); transform:translateY(-4px);}
+.prog-icon{width:56px; height:56px; border-radius:14px; background:var(--blue-light); display:flex; align-items:center; justify-content:center; color:var(--blue); font-size:1.5rem; margin-bottom:18px;}
+.prog-card ul{padding-left:0; list-style:none; margin:16px 0 22px;}
+.prog-card ul li{padding-left:26px; position:relative; margin-bottom:8px; color:var(--ink); font-size:.95rem;}
+.prog-card ul li::before{content:"\F26E"; font-family:"bootstrap-icons"; position:absolute; left:0; color:var(--blue);}
+
+/* benefit section */
+.benefit-band{background:var(--navy); color:#fff; border-radius:24px;}
+.benefit-band h2{color:#fff;}
+.benefit-band p.lead-text{color:#C9D8F5;}
+.benefit-item i{font-size:1.7rem; color:var(--gold); margin-bottom:10px; display:block;}
+.benefit-item h3{font-size:1.1rem; color:#fff; margin-bottom:6px;}
+.benefit-item p{color:#C9D8F5; font-size:.92rem;}
+
+/* steps */
+.step{text-align:center;}
+.step-num{width:56px; height:56px; border-radius:50%; border:2px solid var(--blue); color:var(--blue); font-weight:700; display:flex; align-items:center; justify-content:center; margin:0 auto 16px; font-family:'Sora',sans-serif;}
+.step-line{height:2px; background:#DCE7FA; margin-top:26px;}
+
+/* schools */
+.schools-band{background:var(--blue-light); border-radius:24px;}
+
+/* mission */
+.mission-quote{border-left:4px solid var(--blue); padding-left:24px;}
+.mission-quote q{font-family:'Sora',sans-serif; font-size:1.6rem; color:var(--navy); font-weight:700;}
+
+/* testimonials */
+.testi-card{background:var(--blue-pale); border-radius:var(--radius); padding:28px; height:100%;}
+.avatar{width:52px; height:52px; border-radius:50%; background:var(--blue); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-family:'Sora',sans-serif;}
+.stars{color:var(--gold);}
+
+/* final CTA */
+.final-cta{background:linear-gradient(135deg,var(--blue) 0%, var(--navy) 100%); border-radius:24px; color:#fff;}
+.final-cta h2{color:#fff;}
+.final-cta a.link-white{color:#fff; text-decoration:underline;}
+
+/* form */
+.form-card{background:var(--blue-pale); border-radius:24px; padding:40px;}
+.form-control, .form-select{border-radius:10px; border:1px solid #CFDFF9; padding:11px 14px;}
+.form-control:focus, .form-select:focus{border-color:var(--blue); box-shadow:0 0 0 .2rem rgba(30,95,217,.15);}
+
+/* whatsapp */
+.wa-btn{position:fixed; bottom:calc(22px + env(safe-area-inset-bottom,0px)); right:22px; width:60px; height:60px; border-radius:50%; background:#25D366; color:#fff; display:flex; align-items:center; justify-content:center; font-size:1.7rem; box-shadow:0 10px 26px rgba(0,0,0,.25); z-index:1200; text-decoration:none;}
+.wa-btn:hover{color:#fff;}
+
+/* footer */
+footer{background:var(--navy); color:#C9D8F5; padding:48px 0 26px;}
+footer a{color:#C9D8F5; text-decoration:none;}
+footer a:hover{color:#fff;}
+footer .brand{color:#fff;}
+.social i{font-size:1.2rem; margin-right:14px; color:#C9D8F5;}
+
+@media (prefers-reduced-motion: reduce){*{transition:none!important; scroll-behavior:auto!important;}}
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand brand" href="#">Fluent<span>Minds</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav1">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav1">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+        <li class="nav-item"><a class="nav-link" href="#hero">Início</a></li>
+        <li class="nav-item"><a class="nav-link" href="#programas">Programas</a></li>
+        <li class="nav-item"><a class="nav-link" href="#escolas">Para Escolas</a></li>
+        <li class="nav-item"><a class="nav-link" href="#missao">Sobre</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contacto">Contactos</a></li>
+        <li class="nav-item mt-2 mt-lg-0"><a class="btn btn-primary-brand" href="#contacto">Começar agora</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="hero">
+  <div class="container section pb-0">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <span class="eyebrow">Inglês para todas as idades</span>
+        <h1>Aprenda Inglês. Abra novas oportunidades.</h1>
+        <p class="mt-3 fs-5">Programas de Inglês para crianças, jovens e adultos, com uma aprendizagem prática, dinâmica e orientada para resultados.</p>
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a href="#contacto" class="btn btn-primary-brand btn-lg">Quero aprender Inglês →</a>
+          <a href="#contacto" class="btn btn-outline-brand btn-lg">Falar com um consultor</a>
+        </div>
+        <div class="check-row">
+          <span><i class="bi bi-check-circle-fill"></i> Crianças</span>
+          <span><i class="bi bi-check-circle-fill"></i> Jovens</span>
+          <span><i class="bi bi-check-circle-fill"></i> Adultos</span>
+          <span><i class="bi bi-check-circle-fill"></i> Escolas</span>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="hero-art">
+          <div class="hero-blob"></div>
+          <div class="float-card fc1"><i class="bi bi-mic-fill"></i> Speaking ✓</div>
+          <div class="float-card fc2"><i class="bi bi-emoji-smile-fill"></i> Confidence ✓</div>
+          <div class="float-card fc3"><i class="bi bi-translate"></i> English Skills ✓</div>
+          <svg viewBox="0 0 400 380" style="width:100%;height:100%;position:relative;">
+            <rect x="30" y="30" width="340" height="320" rx="28" fill="var(--blue-light)"/>
+            <circle cx="200" cy="150" r="62" fill="var(--blue)" opacity=".9"/>
+            <rect x="120" y="230" width="160" height="20" rx="10" fill="var(--navy)" opacity=".15"/>
+            <rect x="150" y="262" width="100" height="14" rx="7" fill="var(--navy)" opacity=".12"/>
+            <text x="200" y="160" font-family="Sora,sans-serif" font-size="34" font-weight="800" fill="#fff" text-anchor="middle">EN</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- TRUST STRIP -->
+<section class="trust py-4">
+  <div class="container">
+    <p class="text-center mb-4 fw-semibold" style="color:var(--navy);">Uma experiência de aprendizagem pensada para transformar conhecimento em confiança.</p>
+    <div class="row g-4">
+      <div class="col-md-4 trust-item"><i class="bi bi-lightbulb"></i>Aprendizagem prática</div>
+      <div class="col-md-4 trust-item"><i class="bi bi-mortarboard"></i>Professores preparados</div>
+      <div class="col-md-4 trust-item"><i class="bi bi-people"></i>Programas para todas as idades</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMAS -->
+<section class="section" id="programas">
+  <div class="container">
+    <h2 class="text-center display-6 mb-5">Escolha o programa ideal para si</h2>
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <div class="prog-card">
+          <div class="prog-icon"><i class="bi bi-emoji-laughing"></i></div>
+          <h3 class="h4" style="color:var(--navy);">Crianças</h3>
+          <p>Inglês de forma divertida e natural.</p>
+          <ul>
+            <li>Atividades interativas</li>
+            <li>Desenvolvimento da comunicação</li>
+            <li>Aprendizagem adequada à idade</li>
+          </ul>
+          <a href="#contacto" class="btn btn-outline-brand">Quero saber mais</a>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="prog-card">
+          <div class="prog-icon"><i class="bi bi-backpack2"></i></div>
+          <h3 class="h4" style="color:var(--navy);">Jovens</h3>
+          <p>Inglês para estudar, comunicar e preparar o futuro.</p>
+          <ul>
+            <li>Comunicação</li>
+            <li>Vocabulário</li>
+            <li>Confiança</li>
+            <li>Desenvolvimento académico</li>
+          </ul>
+          <a href="#contacto" class="btn btn-outline-brand">Quero saber mais</a>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="prog-card">
+          <div class="prog-icon"><i class="bi bi-briefcase"></i></div>
+          <h3 class="h4" style="color:var(--navy);">Adultos</h3>
+          <p>Inglês para trabalho, estudos e novas oportunidades.</p>
+          <ul>
+            <li>Conversação</li>
+            <li>Inglês profissional</li>
+            <li>Comunicação</li>
+            <li>Situações reais</li>
+          </ul>
+          <a href="#contacto" class="btn btn-outline-brand">Quero saber mais</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFÍCIO PRINCIPAL -->
+<section class="section pt-0">
+  <div class="container">
+    <div class="benefit-band p-5 p-md-5">
+      <div class="row">
+        <div class="col-lg-7">
+          <h2 class="display-6">Não aprenda apenas Inglês. Aprenda a comunicar.</h2>
+          <p class="lead-text mt-3">Na FluentMinds, o foco não está apenas em memorizar palavras e regras. Desenvolvemos competências para que os nossos alunos possam utilizar o Inglês com mais confiança no mundo real.</p>
+        </div>
+      </div>
+      <div class="row g-4 mt-3">
+        <div class="col-md-4 benefit-item">
+          <i class="bi bi-chat-quote"></i>
+          <h3>Fale com confiança</h3>
+          <p>Desenvolva a capacidade de comunicar em situações reais.</p>
+        </div>
+        <div class="col-md-4 benefit-item">
+          <i class="bi bi-clipboard-check"></i>
+          <h3>Aprenda na prática</h3>
+          <p>Atividades pensadas para tornar a aprendizagem mais dinâmica.</p>
+        </div>
+        <div class="col-md-4 benefit-item">
+          <i class="bi bi-rocket-takeoff"></i>
+          <h3>Prepare o futuro</h3>
+          <p>Use o Inglês como ferramenta para estudos, carreira e oportunidades.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section class="section pt-0">
+  <div class="container">
+    <h2 class="text-center display-6 mb-5">Como funciona</h2>
+    <div class="row g-4">
+      <div class="col-md-4 step">
+        <div class="step-num">01</div>
+        <h3 class="h5" style="color:var(--navy);">Escolha o programa</h3>
+        <p>Encontre a opção adequada à sua idade ou objetivo.</p>
+      </div>
+      <div class="col-md-4 step">
+        <div class="step-num">02</div>
+        <h3 class="h5" style="color:var(--navy);">Fale connosco</h3>
+        <p>A nossa equipa ajuda a encontrar a melhor solução.</p>
+      </div>
+      <div class="col-md-4 step">
+        <div class="step-num">03</div>
+        <h3 class="h5" style="color:var(--navy);">Comece a aprender</h3>
+        <p>Dê o primeiro passo rumo a um Inglês mais confiante.</p>
+      </div>
+    </div>
+    <div class="text-center mt-4">
+      <a href="#contacto" class="btn btn-primary-brand btn-lg">Começar agora →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ESCOLAS -->
+<section class="section pt-0" id="escolas">
+  <div class="container">
+    <div class="schools-band p-5">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+          <span class="eyebrow">Para escolas</span>
+          <h2 class="display-6">Leve o Inglês para a sua escola.</h2>
+          <p class="mt-3">Criamos parcerias com escolas para implementar soluções de ensino de Inglês adaptadas às necessidades dos seus alunos.</p>
+          <div class="d-flex flex-column gap-2 mt-3 fw-semibold" style="color:var(--navy);">
+            <span><i class="bi bi-check-circle-fill" style="color:var(--blue);"></i> Programas personalizados</span>
+            <span><i class="bi bi-check-circle-fill" style="color:var(--blue);"></i> Desenvolvimento linguístico dos alunos</span>
+            <span><i class="bi bi-check-circle-fill" style="color:var(--blue);"></i> Parceria orientada para resultados</span>
+          </div>
+          <a href="#contacto" class="btn btn-primary-brand btn-lg mt-4">Quero ser parceiro</a>
+        </div>
+        <div class="col-lg-5 text-center">
+          <i class="bi bi-building" style="font-size:9rem; color:var(--blue); opacity:.8;"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSÃO -->
+<section class="section pt-0" id="missao">
+  <div class="container">
+    <div class="mission-quote mx-auto" style="max-width:640px;">
+      <q>Transformar vidas através do ensino de línguas.</q>
+      <p class="mt-3 mb-0">Esta é a missão que orienta cada experiência de aprendizagem na FluentMinds.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTEMUNHOS -->
+<section class="section pt-0">
+  <div class="container">
+    <h2 class="text-center display-6 mb-5">Quem aprende, sente a diferença.</h2>
+    <div id="testiCarousel" class="carousel slide d-lg-none" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="testi-card mx-2">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="avatar">MJ</div>
+              <div><strong style="color:var(--navy);">Mariana João</strong><br><small>Mãe de aluno, 9 anos</small></div>
+            </div>
+            <div class="stars mb-2"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+            <p class="mb-0">"O meu filho fala Inglês com muito mais naturalidade e adora as aulas."</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="testi-card mx-2">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="avatar">CN</div>
+              <div><strong style="color:var(--navy);">Carlos Neto</strong><br><small>Aluno adulto</small></div>
+            </div>
+            <div class="stars mb-2"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+            <p class="mb-0">"Ganhei confiança para comunicar em Inglês no trabalho."</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="testi-card mx-2">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="avatar">SP</div>
+              <div><strong style="color:var(--navy);">Sara Pinto</strong><br><small>Estudante, 16 anos</small></div>
+            </div>
+            <div class="stars mb-2"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+            <p class="mb-0">"As aulas são dinâmicas e sinto-me muito mais preparada."</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#testiCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon" style="filter:invert(0.5);"></span></button>
+      <button class="carousel-control-next" type="button" data-bs-target="#testiCarousel" data-bs-slide="next"><span class="carousel-control-next-icon" style="filter:invert(0.5);"></span></button>
+    </div>
+    <div class="row g-4 d-none d-lg-flex">
+      <div class="col-lg-4">
+        <div class="testi-card">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="avatar">MJ</div>
+            <div><strong style="color:var(--navy);">Mariana João</strong><br><small>Mãe de aluno, 9 anos</small></div>
+          </div>
+          <div class="stars mb-2"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+          <p class="mb-0">"O meu filho fala Inglês com muito mais naturalidade e adora as aulas."</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="testi-card">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="avatar">CN</div>
+            <div><strong style="color:var(--navy);">Carlos Neto</strong><br><small>Aluno adulto</small></div>
+          </div>
+          <div class="stars mb-2"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+          <p class="mb-0">"Ganhei confiança para comunicar em Inglês no trabalho."</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="testi-card">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <div class="avatar">SP</div>
+            <div><strong style="color:var(--navy);">Sara Pinto</strong><br><small>Estudante, 16 anos</small></div>
+          </div>
+          <div class="stars mb-2"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+          <p class="mb-0">"As aulas são dinâmicas e sinto-me muito mais preparada."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="section pt-0">
+  <div class="container">
+    <div class="final-cta p-5 text-center">
+      <h2 class="display-5">O seu Inglês pode começar hoje.</h2>
+      <p class="mt-3 mb-4" style="color:#C9D8F5;">Dê o primeiro passo para comunicar com mais confiança e criar novas oportunidades.</p>
+      <a href="#contacto" class="btn btn-light-brand btn-lg">Quero aprender Inglês →</a>
+      <p class="mt-4 mb-0" style="color:#C9D8F5;">Ou fale diretamente com a nossa equipa. <a href="#contacto" class="link-white">Falar connosco</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULÁRIO -->
+<section class="section pt-0" id="contacto">
+  <div class="container">
+    <div class="form-card mx-auto" style="max-width:640px;">
+      <h2 class="text-center mb-4">Comece por aqui</h2>
+      <form onsubmit="event.preventDefault(); alert('Obrigado! Entraremos em contacto em breve.');">
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Nome</label>
+          <input type="text" class="form-control" required>
+        </div>
+        <div class="row g-3 mb-3">
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">WhatsApp / Telefone</label>
+            <input type="tel" class="form-control" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">Email</label>
+            <input type="email" class="form-control" required>
+          </div>
+        </div>
+        <div class="mb-4">
+          <label class="form-label fw-semibold">Tenho interesse em:</label>
+          <select class="form-select" required>
+            <option value="" selected disabled>Selecione uma opção</option>
+            <option>Crianças</option>
+            <option>Jovens</option>
+            <option>Adultos</option>
+            <option>Programa para Escola</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary-brand btn-lg w-100">Quero começar →</button>
+        <p class="text-center mt-3 mb-0" style="font-size:.85rem;">Os seus dados serão utilizados apenas para entrar em contacto consigo.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<a href="https://wa.me/244900000000" class="wa-btn" title="Falar com a FluentMinds" target="_blank" rel="noopener">
+  <i class="bi bi-whatsapp"></i>
+</a>
+
+<footer>
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="brand h4">Fluent<span style="color:#7CA6F0;">Minds</span></div>
+        <p class="mt-2" style="color:#9FB4DE;">"Transformar vidas através do ensino de línguas."</p>
+      </div>
+      <div class="col-md-4">
+        <h3 class="h6 text-white">Links</h3>
+        <div class="d-flex flex-column gap-2 mt-2">
+          <a href="#programas">Programas</a>
+          <a href="#escolas">Escolas</a>
+          <a href="#missao">Sobre</a>
+          <a href="#contacto">Contactos</a>
+          <a href="#">Privacidade</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h3 class="h6 text-white">Redes sociais</h3>
+        <div class="social mt-2">
+          <i class="bi bi-instagram"></i><i class="bi bi-facebook"></i><i class="bi bi-linkedin"></i>
+        </div>
+      </div>
+    </div>
+    <hr style="border-color:rgba(255,255,255,.15); margin-top:32px;">
+    <p class="text-center mb-0" style="color:#9FB4DE; font-size:.85rem;">© 2026 FluentMinds. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
