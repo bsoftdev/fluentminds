@@ -24,7 +24,7 @@ h2{color:var(--navy); font-weight:700; letter-spacing:-0.01em;}
 p{color:var(--muted); line-height:1.65;}
 .section{padding:88px 0;}
 @media (max-width:768px){.section{padding:56px 0;}}
-.eyebrow{display:inline-block; background:var(--blue-light); color:var(--blue); font-weight:600; font-size:.85rem; padding:6px 16px; border-radius:999px; margin-bottom:18px;}
+.eyebrow{display:inline-block; background:var(--blue-light); color:var(--blue); font-weight:600; font-size:clamp(.72rem,2.2vw,.85rem); padding:6px 14px; border-radius:999px; margin-bottom:16px;}
 
 /* Navbar */
 .navbar{position:sticky; top:0; z-index:1000; background:rgba(255,255,255,.92); backdrop-filter:blur(8px); padding-top:calc(14px + env(safe-area-inset-top,0px)); padding-bottom:14px; box-shadow:0 1px 0 rgba(15,46,92,.06);}
@@ -40,11 +40,18 @@ p{color:var(--muted); line-height:1.65;}
 
 /* Hero */
 .hero{background:linear-gradient(180deg,var(--blue-pale) 0%, #fff 100%); overflow:hidden;}
-.hero h1{font-size:3rem; color:var(--navy); font-weight:800; line-height:1.12;}
-@media (max-width:768px){.hero h1{font-size:2.1rem;}}
-.check-row{display:flex; flex-wrap:wrap; gap:18px; margin-top:22px; font-weight:600; color:var(--navy);}
+.hero h1{font-size:clamp(1.7rem, 5vw + .6rem, 3rem); color:var(--navy); font-weight:800; line-height:1.15;}
+.hero .fs-5{font-size:clamp(.95rem, 1.6vw + .55rem, 1.2rem)!important;}
+.hero .btn-lg{font-size:clamp(.85rem, 1.4vw + .5rem, 1.05rem); padding:12px 20px;}
+.check-row{display:flex; flex-wrap:wrap; gap:clamp(10px,3vw,18px); margin-top:20px; font-weight:600; color:var(--navy); font-size:clamp(.8rem,2.2vw,1rem);}
 .check-row span{white-space:nowrap;}
 .check-row i{color:var(--blue);}
+@media (max-width:576px){
+  .hero{text-align:center;}
+  .hero .d-flex.flex-wrap.gap-3{justify-content:center;}
+  .check-row{justify-content:center;}
+  .hero-art{max-width:280px; margin-top:8px;}
+}
 .hero-art{position:relative; width:100%; max-width:420px; aspect-ratio:1/1; margin:0 auto;}
 .hero-art svg{position:absolute; inset:0; width:100%; height:100%; display:block;}
 .hero-blob{position:absolute; inset:0; background:linear-gradient(135deg,var(--blue) 0%, var(--navy) 100%); border-radius:32px; opacity:.08;}
